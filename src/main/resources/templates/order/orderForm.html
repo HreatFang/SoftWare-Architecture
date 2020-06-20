@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+
+</head>
+<body>
+    <header th:replace="common/top">
+    </header>
+
+    <div id="Content">
+        <div id="Catalog">
+
+            <form action="/order/viewConfirmOrder" method="post" th:object="${order}">
+
+                <table>
+                    <tr>
+                        <th colspan=2>Payment Details</th>
+                    </tr>
+                    <tr>
+                        <td>Card Type:</td>
+                        <td>
+                            <select name="cardType">
+                                <option th:each="cardType:${session.creditCardTypes}" th:text="${cardType}">
+                                    ${cardType}
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Card Number:</td>
+                        <td>
+                            <input type="text" name="creditCard" th:field="*{creditCard}">
+                            * Use a fake number!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Expiry Date (MM/YYYY):</td>
+                        <td>
+                            <input type="text" name="expiryDate" th:field="*{expiryDate}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan=2>Billing Address</th>
+                    </tr>
+
+                    <tr>
+                        <td>First name:</td>
+                        <td>
+                            <input type="text" name="billToFirstName" th:field="*{billToFirstName}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Last name:</td>
+                        <td>
+                            <input type="text" name="billToLastName" th:field="*{billToLastName}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address 1:</td>
+                        <td>
+                            <input type="text" name="billAddress1" th:field="*{billAddress1}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address 2:</td>
+                        <td>
+                            <input type="text" name="billAddress2" th:field="*{billAddress2}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        <td>
+                            <input type="text" name="billCity" th:field="*{billCity}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>State:</td>
+                        <td>
+                            <input type="text" name="billState" th:field="*{billState}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zip:</td>
+                        <td>
+                            <input type="text" name="billZip" th:field="*{billZip}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Country:</td>
+                        <td>
+                            <input type="text" name="billCountry" th:field="*{billCountry}">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan=2>
+                            <input type="checkbox" name="shippingAddressRequired" th:field="*{shippingAddressRequired}">
+                            Ship to different address...
+                        </td>
+                    </tr>
+
+                </table>
+
+                <input type="submit" value="Continue">
+
+            </form>
+        </div>
+    </div>
+
+    <footer th:replace="common/bottom">
+    </footer>
+</body>
+</html>

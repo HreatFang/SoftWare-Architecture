@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="StyleSheet" href="../css/jpetstore.css" type="text/css" media="screen"/>
+</head>
+<body>
+<header th:replace="common/top"></header>
+<div id="Content">
+    <div id="Catalog">
+        <form action="/order/newOrder" method="post">
+
+
+            <table>
+                <tr>
+                    <th colspan=2>Payment Details</th>
+                </tr>
+                <tr>
+                    <td>Card Type:</td>
+                    <td>
+                        <select th:field="*{cardType}">
+                            <option th:each="cardType:${creditCardTypes}" th:value="${cardType}" th:text="${cardType}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Card Number:</td>
+                    <td>
+                        <input type="text" th:field="*{creditCard}">
+                        * Use a fake
+                        number!
+                    </td>
+                </tr>
+                <tr>
+                    <td>Expiry Date (MM/YYYY):</td>
+                    <td>
+                        <input type="text" th:field="*{expiryDate}">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan=2>Billing Address</th>
+                </tr>
+
+                <tr>
+                    <td>First name:</td>
+                    <td>
+                        <input type="text" th:field="*{billToFirstName}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last name:</td>
+                    <td>
+                        <input type="text" th:field="*{billToLastName}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address 1:</td>
+                    <td>
+                        <input type="text" size="40" th:field="*{billAddress1}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address 2:</td>
+                    <td>
+                        <input type="text" size="40" th:field="*{billAddress2}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        <input type="text" th:field="*{billCity}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>State:</td>
+                    <td>
+                        <input type="text" size="4" th:field="*{billState}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip:</td>
+                    <td>
+                        <input type="text"  size="10" th:field="*{billZip}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td>
+                        <input type="text" size="15" th:field="*{billCountry}">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan=2>
+                        <input type="checkbox" th:field="*{shippingAddressRequired}">
+                        Ship to different address...
+                    </td>
+                </tr>
+                <input type="submit" value="Continue">
+            </table>
+        </form>
+
+
+    </div>
+</div>
+<footer th:replace="common/bottom"></footer>
+</body>
+</html>
